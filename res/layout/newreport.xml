@@ -3,5 +3,5 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content">
-<Button android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Take a shot"></Button>
+<Button android:id="@+id/ButtonShot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Take a shot"></Button>
 </LinearLayout>
