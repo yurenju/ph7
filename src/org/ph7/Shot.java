@@ -1,6 +1,8 @@
 package org.ph7;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
@@ -30,6 +32,7 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 	SurfaceView surfaceView;
 	Camera mCamera;
 	LocationManager mLocationManager;
+	Builder builder;
 
 	LocationListener[] mLocationListeners = new LocationListener[] {
 			new LocationListener(LocationManager.GPS_PROVIDER),
@@ -90,6 +93,8 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 
 		mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		startReceivingLocationUpdates();
+		
+		builder = new AlertDialog.Builder(this);
 	}
 
 	@Override
@@ -180,6 +185,10 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 
 		public void onLocationChanged(Location newLocation) {
 			Log.d(TAG, "onLocationChanged");
+			builder.setMessage(newLocation.getLatitude() + ", " + newLocation.getLongitude());
+			AlertDialog alert = builder.create();
+			alert.show();
+			
 			if (newLocation.getLatitude() == 0.0
 					&& newLocation.getLongitude() == 0.0) {
 				// Hack to filter out 0.0,0.0 locations
