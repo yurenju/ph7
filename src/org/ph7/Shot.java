@@ -39,6 +39,7 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 			new LocationListener(LocationManager.NETWORK_PROVIDER) };
 
 	private void startReceivingLocationUpdates() {
+		Log.d(TAG, "startReceivingLocationUpdates");
 		if (mLocationManager != null) {
 			try {
 				mLocationManager.requestLocationUpdates(
@@ -62,6 +63,7 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 	}
 
 	private void stopReceivingLocationUpdates() {
+		Log.d(TAG, "stopReceivingLocationUpdates");
 		if (mLocationManager != null) {
 			for (int i = 0; i < mLocationListeners.length; i++) {
 				try {
@@ -105,7 +107,6 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 
 	@Override
 	protected void onResume() {
-		startReceivingLocationUpdates();
 		super.onResume();
 	}
 
@@ -184,10 +185,12 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		}
 
 		public void onLocationChanged(Location newLocation) {
-			Log.d(TAG, "onLocationChanged");
-			builder.setMessage(newLocation.getLatitude() + ", " + newLocation.getLongitude());
-			AlertDialog alert = builder.create();
-			alert.show();
+//			Log.d(TAG, "onLocationChanged");
+//			Log.d(TAG, newLocation.getLatitude() + ", " + newLocation.getLongitude());
+//			builder.setMessage(newLocation.getLatitude() + ", " + newLocation.getLongitude());
+//			AlertDialog alert = builder.create();
+//			alert.show();
+			showLocation(newLocation);
 			
 			if (newLocation.getLatitude() == 0.0
 					&& newLocation.getLongitude() == 0.0) {
@@ -197,6 +200,7 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 
 			mLastLocation.set(newLocation);
 			mValid = true;
+			
 		}
 
 		public void onProviderEnabled(String provider) {
@@ -208,10 +212,16 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 
 		public void onStatusChanged(String provider, int status, Bundle extras) {
 			switch (status) {
-			case LocationProvider.OUT_OF_SERVICE:
+			case LocationProvider.OUT_OF_SERVICE: {
+				Log.d (TAG, "OUT_OF_SERVICE");
+			}
 			case LocationProvider.TEMPORARILY_UNAVAILABLE: {
+				Log.d (TAG, "TEMPORARILY_UNAVAILABLE");
 				mValid = false;
 				break;
+			}
+			case LocationProvider.AVAILABLE: {
+				Log.d (TAG, "AVAILABLE");
 			}
 			}
 		}
@@ -230,6 +240,15 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		mCamera.autoFocus(this);
 
 	}
+	
+	public void showLocation (Location location) {
+		if (location != null) {
+			Log.d(TAG, String.format("Location: %f, %f", location.getLatitude(), location.getLongitude()));
+		}
+		else {
+			Log.d(TAG, "location is null");
+		}
+	}
 
 	public void onPictureTaken(byte[] data, Camera arg1) {
 		FileOutputStream outStream = null;
@@ -246,11 +265,8 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		} finally {
 		}
 		Log.d(TAG, "onPictureTaken - jpeg");
-		Location location = getCurrentLocation();
-		if (location != null) {
-			Log.d(TAG, "Latitude: " + location.getLatitude());
-			Log.d(TAG, "Longitude: " + location.getLongitude());
-		}
+		showLocation (getCurrentLocation());
+
 	}
 
 	private Location getCurrentLocation() {
