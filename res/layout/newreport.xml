@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content">
-<Button android:id="@+id/ButtonShot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Take a shot"></Button>
-<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Enable GPS" android:id="@+id/ButtonGps"></Button>
-</LinearLayout>
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/ImageLogo"></ImageView>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Enable GPS" android:id="@+id/ButtonGps" android:layout_below="@id/ImageLogo"></Button>
+<Button android:id="@+id/ButtonShot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Take a shot" android:layout_below="@id/ButtonGps"></Button>
+</RelativeLayout>

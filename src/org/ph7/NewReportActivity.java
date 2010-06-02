@@ -8,12 +8,15 @@ import android.provider.Settings;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class NewReportActivity extends Activity implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newreport);
         
+        final ImageView imageLogo = (ImageView)findViewById(R.id.ImageLogo);
+        imageLogo.setImageResource(R.drawable.logo);
         final Button buttonShot = (Button)findViewById(R.id.ButtonShot);
         buttonShot.setOnClickListener(this);
         final Button buttonGps = (Button)findViewById(R.id.ButtonGps);
