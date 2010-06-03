@@ -3,21 +3,48 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent">
-<ImageView android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:id="@+id/ImageLogo"
-	android:src="@drawable/logo"
-	android:layout_alignParentTop="true"
-	android:layout_centerHorizontal="true">
-</ImageView>
-<TextView
-android:id="@+id/widget33"
+<Button
+android:id="@+id/ButtonShot"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text="TextView"
-android:layout_centerVertical="true"
+android:text="Take a shot"
+android:layout_alignParentBottom="true"
+android:layout_centerHorizontal="true"
+>
+</Button>
+<Button
+android:id="@+id/ButtonGps"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Location settings"
+android:layout_below="@+id/location_provider_list"
 android:layout_alignParentLeft="true"
-></TextView>
-<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Enable GPS" android:id="@+id/ButtonGps" android:layout_below="@id/ImageLogo"></Button>
-<Button android:id="@+id/ButtonShot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Take a shot" android:layout_below="@id/ButtonGps"></Button>
+>
+</Button>
+<ListView
+android:id="@+id/location_provider_list"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@+id/provider_text"
+android:layout_alignParentLeft="true"
+>
+</ListView>
+<TextView
+android:id="@+id/provider_text"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Location provider status:"
+android:layout_below="@+id/ImageLogo"
+android:layout_alignParentLeft="true"
+>
+</TextView>
+<ImageView
+android:id="@+id/ImageLogo"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentTop="true"
+android:layout_centerHorizontal="true"
+android:src="@drawable/logo"
+>
+</ImageView>
 </RelativeLayout>
