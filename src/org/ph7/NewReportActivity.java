@@ -15,8 +15,6 @@ public class NewReportActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newreport);
         
-        final ImageView imageLogo = (ImageView)findViewById(R.id.ImageLogo);
-        imageLogo.setImageResource(R.drawable.logo);
         final Button buttonShot = (Button)findViewById(R.id.ButtonShot);
         buttonShot.setOnClickListener(this);
         final Button buttonGps = (Button)findViewById(R.id.ButtonGps);
