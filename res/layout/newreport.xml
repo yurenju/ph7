@@ -2,10 +2,12 @@
 <RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
+  android:layout_height="fill_parent"
+  android:padding="10px"
+>
 <Button
 android:id="@+id/ButtonShot"
-android:layout_width="wrap_content"
+android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:text="Take a shot"
 android:layout_alignParentBottom="true"
@@ -17,7 +19,7 @@ android:id="@+id/ButtonGps"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="Location settings"
-android:layout_below="@+id/location_provider_list"
+android:layout_below="@+id/ProviderHelpText"
 android:layout_alignParentLeft="true"
 >
 </Button>
@@ -30,12 +32,14 @@ android:layout_alignParentLeft="true"
 >
 </ListView>
 <TextView
-android:id="@+id/provider_text"
+android:id="@+id/ProviderText"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="Location provider status:"
 android:layout_below="@+id/ImageLogo"
 android:layout_alignParentLeft="true"
+android:layout_marginTop="20px"
+android:layout_marginBottom="10px"
 >
 </TextView>
 <ImageView
@@ -47,4 +51,47 @@ android:layout_centerHorizontal="true"
 android:src="@drawable/logo"
 >
 </ImageView>
+<ImageView
+android:id="@+id/ImageStatusNetwork"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:src="@drawable/no"
+android:layout_below="@id/ProviderText"
+android:layout_marginBottom="5px"
+android:layout_marginRight="5px"
+></ImageView>
+<ImageView
+android:id="@+id/ImageStatusGps"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@id/ImageStatusNetwork"
+android:src="@drawable/no"
+android:layout_marginRight="5px"
+android:layout_marginBottom="15px"
+></ImageView>
+<TextView
+android:id="@+id/ProviderHelpText"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Please enable at least one network provider"
+android:layout_below="@+id/ImageStatusGps"
+android:layout_alignParentLeft="true"
+android:layout_marginBottom="5px"
+></TextView>
+<TextView
+android:id="@+id/ProviderGpsText"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="GPS satellites"
+android:layout_toRightOf="@+id/ImageStatusGps"
+android:layout_alignTop="@+id/ImageStatusGps"
+></TextView>
+<TextView
+android:id="@+id/ProviderNetworkText"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Wireless network"
+android:layout_toRightOf="@+id/ImageStatusNetwork"
+android:layout_alignTop="@+id/ImageStatusNetwork"
+></TextView>
 </RelativeLayout>
