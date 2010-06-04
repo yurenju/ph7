@@ -19,6 +19,7 @@ import android.view.Window;
 import android.view.SurfaceHolder.Callback;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -244,6 +245,8 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 	public void showLocation (Location location) {
 		if (location != null) {
 			Log.d(TAG, String.format("Location: %f, %f", location.getLatitude(), location.getLongitude()));
+			((TextView)findViewById(R.id.TextLocation))
+				.setText(String.format("(%f, %f)", location.getLatitude(), location.getLongitude()));
 		}
 		else {
 			Log.d(TAG, "location is null");

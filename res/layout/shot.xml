@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:orientation="vertical">
-  
-  <Button android:text="Take a shot" android:id="@+id/ButtonShutter" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
-  <SurfaceView android:id="@+id/camera_preview"
-  			android:layout_width="wrap_content"
-  			android:layout_height="wrap_content" />
-  
-</LinearLayout>
+<RelativeLayout
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+<SurfaceView
+android:id="@+id/camera_preview"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentTop="true"
+android:layout_centerHorizontal="true"
+>
+</SurfaceView>
+<Button
+android:id="@+id/ButtonShutter"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentBottom="true"
+android:layout_alignParentLeft="true"
+android:text="Take a shot"
+>
+</Button>
+<TextView
+android:id="@+id/TextLocation"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Getting location"
+
+android:layout_marginBottom="5px"
+android:layout_marginLeft="5px"
+android:layout_alignParentBottom="true"
+android:layout_alignParentRight="true"
+>
+</TextView>
+<ImageView
+android:id="@+id/ImageLocation"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:src="@drawable/ic_camera_sym_gps"
+android:layout_alignBottom="@+id/TextLocation"
+android:layout_toLeftOf="@+id/TextLocation"
+>
+</ImageView>
+</RelativeLayout>
