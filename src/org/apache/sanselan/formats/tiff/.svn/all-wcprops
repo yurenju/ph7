@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/4/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff
+END
+TiffHeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/TiffHeader.java
+END
+TiffElement.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/TiffElement.java
+END
+JpegImageData.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/JpegImageData.java
+END
+TiffContents.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/TiffContents.java
+END
+TiffImageParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/TiffImageParser.java
+END
+TiffReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/TiffReader.java
+END
+TiffImageMetadata.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/TiffImageMetadata.java
+END
+TiffField.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/TiffField.java
+END
+TiffDirectory.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/TiffDirectory.java
+END

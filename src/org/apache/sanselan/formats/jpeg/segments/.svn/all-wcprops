@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/6/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/segments
+END
+GenericSegment.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/segments/GenericSegment.java
+END
+JFIFSegment.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/segments/JFIFSegment.java
+END
+APPNSegment.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/segments/APPNSegment.java
+END
+Segment.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/segments/Segment.java
+END
+UnknownSegment.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/segments/UnknownSegment.java
+END
+App2Segment.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/segments/App2Segment.java
+END
+SOSSegment.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/segments/SOSSegment.java
+END
+SOFNSegment.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/segments/SOFNSegment.java
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/9/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg
+END
+JpegConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/JpegConstants.java
+END
+JpegImageParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/9/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/JpegImageParser.java
+END
+JpegUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/JpegUtils.java
+END
+JpegImageMetadata.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/5/trunk/SanselanAndroid/src/org/apache/sanselan/formats/jpeg/JpegImageMetadata.java
+END

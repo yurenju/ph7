@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/mylzw
+END
+MyLZWCompressor.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/mylzw/MyLZWCompressor.java
+END
+MyBitInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/mylzw/MyBitInputStream.java
+END
+MyBitOutputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/mylzw/MyBitOutputStream.java
+END
+BitsToByteInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/mylzw/BitsToByteInputStream.java
+END
+MyLZWDecompressor.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/mylzw/MyLZWDecompressor.java
+END

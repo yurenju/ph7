@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/9/trunk/SanselanAndroid/src/org/apache/sanselan
+END
+ImageParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/9/trunk/SanselanAndroid/src/org/apache/sanselan/ImageParser.java
+END
+SanselanConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/SanselanConstants.java
+END
+SanselanException.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/SanselanException.java
+END
+FormatCompliance.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/FormatCompliance.java
+END
+Sanselan.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/5/trunk/SanselanAndroid/src/org/apache/sanselan/Sanselan.java
+END
+ImageFormat.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/ImageFormat.java
+END
+ImageWriteException.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/ImageWriteException.java
+END
+ImageReadException.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/ImageReadException.java
+END
+ImageInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/ImageInfo.java
+END

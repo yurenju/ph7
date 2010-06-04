@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/util
+END
+DebugInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/util/DebugInputStream.java
+END
+DebugOutputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/util/DebugOutputStream.java
+END
+Debug.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/util/Debug.java
+END
+UnicodeUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/util/UnicodeUtils.java
+END
+CachingInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/util/CachingInputStream.java
+END
+IOUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/util/IOUtils.java
+END
+CachingOutputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/util/CachingOutputStream.java
+END
+ParamMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/util/ParamMap.java
+END

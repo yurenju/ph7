@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/byteSources
+END
+ByteSourceInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/byteSources/ByteSourceInputStream.java
+END
+ByteSourceArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/byteSources/ByteSourceArray.java
+END
+ByteSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/byteSources/ByteSource.java
+END
+ByteSourceFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/common/byteSources/ByteSourceFile.java
+END

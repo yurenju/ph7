@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/constants
+END
+AllTagConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/constants/AllTagConstants.java
+END
+TiffTagConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/constants/TiffTagConstants.java
+END
+GPSTagConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/constants/GPSTagConstants.java
+END
+ExifTagConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/constants/ExifTagConstants.java
+END
+TiffConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/constants/TiffConstants.java
+END
+TagInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/constants/TagInfo.java
+END
+TagConstantsUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/constants/TagConstantsUtils.java
+END
+TiffDirectoryConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/constants/TiffDirectoryConstants.java
+END
+TiffFieldTypeConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/constants/TiffFieldTypeConstants.java
+END

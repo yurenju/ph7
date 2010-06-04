@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/4/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/fieldtypes
+END
+FieldTypeRational.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/fieldtypes/FieldTypeRational.java
+END
+FieldTypeDouble.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/fieldtypes/FieldTypeDouble.java
+END
+FieldTypeUnknown.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/fieldtypes/FieldTypeUnknown.java
+END
+FieldType.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/fieldtypes/FieldType.java
+END
+FieldTypeLong.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/fieldtypes/FieldTypeLong.java
+END
+FieldTypeShort.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/fieldtypes/FieldTypeShort.java
+END
+FieldTypeByte.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/fieldtypes/FieldTypeByte.java
+END
+FieldTypeFloat.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/fieldtypes/FieldTypeFloat.java
+END
+FieldTypeASCII.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/4/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/fieldtypes/FieldTypeASCII.java
+END

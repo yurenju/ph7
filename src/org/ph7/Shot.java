@@ -11,6 +11,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -21,10 +22,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+
+import org.apache.sanselan.ImageReadException;
+import org.apache.sanselan.ImageWriteException;
+import org.apache.sanselan.formats.jpeg.exifRewrite.ExifRewriter;
+import org.apache.sanselan.formats.tiff.write.TiffOutputSet;
 
 public class Shot extends Activity implements Callback, AutoFocusCallback,
 		OnClickListener, Camera.PictureCallback {
@@ -253,17 +260,42 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		}
 	}
 
+	public File getStorageDir () {
+		File dir = new File(Environment.getExternalStorageDirectory(), "ph7");
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		return dir;
+	}
+	
 	public void onPictureTaken(byte[] data, Camera arg1) {
 		FileOutputStream outStream = null;
+		TiffOutputSet outset = new TiffOutputSet();
+		Location loc = getCurrentLocation();
+		File dir = getStorageDir();
+		String filename = String.format("%s/%d.jpg",
+				dir.toString(), System.currentTimeMillis());
+		
 		try {
-			outStream = new FileOutputStream(String.format("/sdcard/%d.jpg",
-					System.currentTimeMillis()));
-			outStream.write(data);
-			outStream.close();
+			outStream = new FileOutputStream(filename);
 			Log.d(TAG, "onPictureTaken - wrote bytes: " + data.length);
+			
+			if (loc != null) {
+				outStream = new FileOutputStream(filename);
+				outset.setGPSInDegrees(loc.getLongitude(), loc.getLatitude());
+				new ExifRewriter().updateExifMetadataLossless (data, outStream, outset);
+			}
+			else {
+				outStream.write(data);	
+			}
+			outStream.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ImageWriteException e) {
+			e.printStackTrace();
+		} catch (ImageReadException e) {
 			e.printStackTrace();
 		} finally {
 		}

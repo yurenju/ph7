@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/4/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/write
+END
+TiffImageWriterLossless.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/write/TiffImageWriterLossless.java
+END
+TiffImageWriterLossy.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/write/TiffImageWriterLossy.java
+END
+TiffImageWriterBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/write/TiffImageWriterBase.java
+END
+TiffOutputSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/write/TiffOutputSet.java
+END
+ImageDataOffsets.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/write/ImageDataOffsets.java
+END
+TiffOutputSummary.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/write/TiffOutputSummary.java
+END
+TiffOutputItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/write/TiffOutputItem.java
+END
+TiffOutputField.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/4/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/write/TiffOutputField.java
+END
+TiffOutputDirectory.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/3/trunk/SanselanAndroid/src/org/apache/sanselan/formats/tiff/write/TiffOutputDirectory.java
+END
