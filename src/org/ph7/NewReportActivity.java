@@ -38,7 +38,13 @@ public class NewReportActivity extends Activity implements OnClickListener {
 	public void onClick(View arg0) {
 		Intent intent = new Intent ();
 		intent.setClass(this, Shot.class);
-		startActivity(intent);
+		startActivityForResult(intent, RESULT_OK);
+	}
+	
+	protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+		if (resultCode == RESULT_OK) {
+			
+		}
 	}
 	
 	private void checkLocationProvider () {

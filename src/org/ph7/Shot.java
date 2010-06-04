@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.Size;
@@ -301,7 +302,9 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		}
 		Log.d(TAG, "onPictureTaken - jpeg");
 		showLocation (getCurrentLocation());
-
+		setResult(RESULT_OK,
+					new Intent().putExtra("path", filename));
+		finish();
 	}
 
 	private Location getCurrentLocation() {
