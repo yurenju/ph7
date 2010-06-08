@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+android:id="@+id/widget28"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<Button
+android:id="@+id/SubmitReport"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Submit report"
+android:layout_alignParentBottom="true"
+android:layout_centerHorizontal="true"
+>
+</Button>
+
+<ImageView
+android:id="@+id/ImagePreview"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:padding="5px"
+android:layout_below="@+id/ButtonAgain">
+</ImageView>
+<Button
+android:id="@+id/ButtonAgain"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Take again"
+android:layout_alignParentTop="true"
+>
+</Button>
+<TextView
+android:id="@+id/TextIssueType"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Issue type:"
+android:layout_toRightOf="@+id/ImagePreview"
+android:layout_alignTop="@+id/ImagePreview"
+></TextView>
+<TextView
+android:id="@+id/TextSelectedIssueType"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Select issue type"
+android:layout_below="@+id/TextIssueType"
+android:layout_alignLeft="@+id/TextIssueType"
+></TextView>
+<Button
+android:id="@+id/IssueType"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="»"
+android:layout_toRightOf="@+id/TextSelectedIssueType"
+></Button>
+<TextView
+android:id="@+id/TextAdditionalInfo"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Additional Information:"
+android:layout_below="@+id/ImagePreview"
+></TextView>
+
+<EditText
+android:text="(Optional)" android:id="@+id/EditAdditional" 
+android:layout_height="wrap_content" 
+android:layout_below="@+id/TextAdditionalInfo" 
+android:layout_width="fill_parent"
+android:lines="4"></EditText>
+
+</RelativeLayout>

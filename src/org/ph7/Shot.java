@@ -302,9 +302,9 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		}
 		Log.d(TAG, "onPictureTaken - jpeg");
 		showLocation (getCurrentLocation());
-		setResult(RESULT_OK,
-					new Intent().putExtra("path", filename));
-		finish();
+		Intent intent = new Intent().setClass(this, SubmitIssue.class);
+		intent.putExtra("picture-path", filename);
+		startActivity(intent);
 	}
 
 	private Location getCurrentLocation() {

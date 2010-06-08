@@ -16,6 +16,7 @@
     <activity android:name="NewReportActivity"></activity>
 <activity android:name="MyReportActivity"></activity>
 <activity android:name="Shot" android:screenOrientation="portrait"></activity>
+<activity android:name="SubmitIssue"></activity>
 </application>
 
 
