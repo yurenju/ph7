@@ -51,7 +51,10 @@ android:id="@+id/IssueType"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="»"
-android:layout_toRightOf="@+id/TextSelectedIssueType"
+android:paddingLeft="20px"
+android:paddingRight="20px"
+android:layout_alignParentRight="true"
+android:layout_alignTop="@+id/TextIssueType"
 ></Button>
 <TextView
 android:id="@+id/TextAdditionalInfo"
@@ -62,10 +65,12 @@ android:layout_below="@+id/ImagePreview"
 ></TextView>
 
 <EditText
-android:text="(Optional)" android:id="@+id/EditAdditional" 
+android:id="@+id/EditAdditional"
+android:hint="Optional" 
 android:layout_height="wrap_content" 
 android:layout_below="@+id/TextAdditionalInfo" 
 android:layout_width="fill_parent"
+android:gravity="top|left"
 android:lines="4"></EditText>
 
 </RelativeLayout>
