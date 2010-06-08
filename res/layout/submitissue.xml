@@ -4,6 +4,7 @@ android:id="@+id/widget28"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 xmlns:android="http://schemas.android.com/apk/res/android"
+android:padding="5px"
 >
 <Button
 android:id="@+id/SubmitReport"
@@ -19,17 +20,11 @@ android:layout_centerHorizontal="true"
 android:id="@+id/ImagePreview"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:padding="5px"
-android:layout_below="@+id/ButtonAgain">
+android:padding="1px"
+android:layout_margin="5px"
+android:background="@android:color/white"
+android:layout_alignParentLeft="true">
 </ImageView>
-<Button
-android:id="@+id/ButtonAgain"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Take again"
-android:layout_alignParentTop="true"
->
-</Button>
 <TextView
 android:id="@+id/TextIssueType"
 android:layout_width="wrap_content"
@@ -77,6 +72,7 @@ android:id="@+id/TextAdditionalInfo"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="Additional Information:"
+android:layout_marginTop="5px"
 android:layout_below="@+id/ImagePreview"
 ></TextView>
 
