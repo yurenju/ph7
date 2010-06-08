@@ -304,6 +304,8 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		showLocation (getCurrentLocation());
 		Intent intent = new Intent().setClass(this, SubmitIssue.class);
 		intent.putExtra("picture-path", filename);
+		intent.putExtra("latitude", loc.getLatitude());
+		intent.putExtra("longitude", loc.getLongitude());
 		startActivity(intent);
 	}
 
