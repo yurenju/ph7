@@ -38,8 +38,8 @@ android:id="@+id/TextLocationDescription"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="Location:"
-android:layout_below="@+id/TextSelectedIssueType"
-android:layout_alignLeft="@+id/TextSelectedIssueType"
+android:layout_below="@+id/ButtonIssueType"
+android:layout_alignLeft="@+id/TextIssueType"
 android:layout_marginTop="10px"
 ></TextView>
 <TextView
@@ -49,23 +49,15 @@ android:layout_height="wrap_content"
 android:layout_below="@+id/TextLocationDescription"
 android:layout_alignLeft="@+id/TextLocationDescription"
 ></TextView>
-<TextView
-android:id="@+id/TextSelectedIssueType"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Select issue type"
-android:layout_below="@+id/TextIssueType"
-android:layout_alignLeft="@+id/TextIssueType"
-></TextView>
 <Button
-android:id="@+id/IssueType"
+android:id="@+id/ButtonIssueType"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text="»"
+android:text="Select IssueType"
 android:paddingLeft="20px"
 android:paddingRight="20px"
-android:layout_alignParentRight="true"
-android:layout_alignTop="@+id/TextIssueType"
+android:layout_below="@+id/TextIssueType"
+android:layout_alignLeft="@+id/TextIssueType"
 ></Button>
 <TextView
 android:id="@+id/TextAdditionalInfo"
