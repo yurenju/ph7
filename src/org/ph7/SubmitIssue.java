@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -12,10 +15,15 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SubmitIssue extends Activity {
+	private static final int SELECT_ISSUE_TYPE = 0;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		double latitude = getIntent().getExtras().getDouble("latitude");
@@ -42,7 +50,35 @@ public class SubmitIssue extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Button selectButton = (Button)findViewById(R.id.ButtonIssueType);
+		selectButton.setOnClickListener(new OnClickListener() {			
+			public void onClick(View arg0) {
+				showDialog(SELECT_ISSUE_TYPE);
+			}
+		});
 	}
+	
+	@Override
+	protected Dialog onCreateDialog (int id) {
+		switch (id) {
+		case SELECT_ISSUE_TYPE:
+			return new AlertDialog.Builder(SubmitIssue.this)
+				.setTitle(R.string.select_issue_type)
+				.setItems(R.array.issue_items, new DialogInterface.OnClickListener() {					
+					public void onClick(DialogInterface dialog, int which) {
+						String[] items = getResources().getStringArray(R.array.issue_items);
+						Button btn = (Button) findViewById(R.id.ButtonIssueType);
+						btn.setText(items[which]);
+					}
+				}).create();
+
+		default:
+			break;
+		}
+		return null;
+	}
+	
 	private float getRatio (Bitmap bm) {
 		Display d = getWindowManager().getDefaultDisplay();
 		int targetHeight = d.getHeight()/4;
