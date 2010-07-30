@@ -8,16 +8,13 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQueryBuilder;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,6 +30,7 @@ public class SubmitIssue extends Activity {
 	private double longitude;
 	private double accuracy;
 	private int issueType;
+	private String imageFilename;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +39,12 @@ public class SubmitIssue extends Activity {
 		latitude = getIntent().getExtras().getDouble("latitude");
 		longitude = getIntent().getExtras().getDouble("longitude");
 		accuracy = getIntent().getExtras().getDouble("accuracy");
+		imageFilename = getIntent().getExtras().getString("picture-path");
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.submitissue);
 		ImageView image = (ImageView)findViewById(R.id.ImagePreview);
-		String filename = getIntent().getExtras().getString("picture-path");
-		Bitmap bm = BitmapFactory.decodeFile(filename);
+		Bitmap bm = BitmapFactory.decodeFile(imageFilename);
 		Matrix matrix = new Matrix ();
 		float ratio = getRatio(bm);
 		matrix.postScale(ratio, ratio);
@@ -85,6 +83,7 @@ public class SubmitIssue extends Activity {
 				values.put("accuracy", accuracy);
 				values.put("issue_type", issueType);
 				values.put("created_time", now);
+				values.put("image_filename", imageFilename);
 				
 				SQLiteDatabase db = dbHelper.getWritableDatabase();
 				db.insert(DbOpenHelper.REPORTS_TABLE_NAME,
