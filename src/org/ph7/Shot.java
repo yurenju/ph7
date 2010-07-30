@@ -252,9 +252,11 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 	
 	public void showLocation (Location location) {
 		if (location != null) {
-			Log.d(TAG, String.format("Location: %f, %f", location.getLatitude(), location.getLongitude()));
+			Log.d(TAG, String.format("Location: %f, %f",
+				location.getLatitude(), location.getLongitude()));
 			((TextView)findViewById(R.id.TextLocation))
-				.setText(String.format("(%f, %f)", location.getLatitude(), location.getLongitude()));
+				.setText(String.format("(%f, %f)",
+				location.getLatitude(), location.getLongitude()));
 		}
 		else {
 			Log.d(TAG, "location is null");

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.provider.Settings;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -48,20 +47,27 @@ public class NewReportActivity extends Activity implements OnClickListener {
 	}
 	
 	private void checkLocationProvider () {
-		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		boolean gpsStatus = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-		boolean netStatus = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER); 
+		LocationManager locationManager =
+			(LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		boolean gpsStatus = 
+			locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+		boolean netStatus = 
+			locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+		
 		if (gpsStatus)
-			((ImageView)findViewById(R.id.ImageStatusGps)).setImageResource(R.drawable.yes);
+			((ImageView)findViewById(R.id.ImageStatusGps))
+						.setImageResource(R.drawable.yes);
 		else
-			((ImageView)findViewById(R.id.ImageStatusGps)).setImageResource(R.drawable.no);
+			((ImageView)findViewById(R.id.ImageStatusGps))
+						.setImageResource(R.drawable.no);
 		
 		if (netStatus)
-			((ImageView)findViewById(R.id.ImageStatusNetwork)).setImageResource(R.drawable.yes);
+			((ImageView)findViewById(R.id.ImageStatusNetwork))
+						.setImageResource(R.drawable.yes);
 		else
-			((ImageView)findViewById(R.id.ImageStatusNetwork)).setImageResource(R.drawable.no);
+			((ImageView)findViewById(R.id.ImageStatusNetwork))
+						.setImageResource(R.drawable.no);
 		
 		((Button)findViewById(R.id.ButtonShot)).setEnabled(!(!gpsStatus && !netStatus));
-		
 	}
 }

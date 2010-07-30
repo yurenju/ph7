@@ -49,7 +49,8 @@ public class SubmitIssue extends Activity {
 		float ratio = getRatio(bm);
 		matrix.postScale(ratio, ratio);
 		matrix.postRotate(90);
-		Bitmap rbm = Bitmap.createBitmap(bm, 0, 0, bm.getWidth(), bm.getHeight(), matrix, true);
+		Bitmap rbm = Bitmap.createBitmap(bm, 0, 0,
+				bm.getWidth(), bm.getHeight(), matrix, true);
 		image.setImageBitmap(rbm);
 		Geocoder geocoder = new Geocoder(this);
 		try {
@@ -72,7 +73,8 @@ public class SubmitIssue extends Activity {
 		Button submitBtn = (Button)findViewById(R.id.ButtonSubmit);
 		submitBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
-				String comment = ((TextView)findViewById(R.id.TextAdditionalInfo)).getText().toString();
+				String comment = ((TextView)findViewById(R.id.TextAdditionalInfo))
+									.getText().toString();
 				Long  now = Long.valueOf(System.currentTimeMillis());
 				
 				ContentValues values = new ContentValues();

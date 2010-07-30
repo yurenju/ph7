@@ -15,12 +15,15 @@ public class main extends TabActivity {
         TabHost tabHost = getTabHost();
         TabHost.TabSpec spec;
         Intent intent;
-        TabAttribute[] attrs = {new TabAttribute("new-report", "New report", NewReportActivity.class),
-        						new TabAttribute("my-report", "My report", MyReportActivity.class)};
+        TabAttribute[] attrs = {
+        	new TabAttribute("new-report", "New report", NewReportActivity.class),
+        	new TabAttribute("my-report", "My report", MyReportActivity.class)
+        };
         
         for (TabAttribute tabAttribute : attrs) {
             intent = new Intent().setClass(this, tabAttribute.activityClass);
-            spec = tabHost.newTabSpec(tabAttribute.tagName).setIndicator(tabAttribute.indicator).setContent(intent);
+            spec = tabHost.newTabSpec(tabAttribute.tagName)
+            			  .setIndicator(tabAttribute.indicator).setContent(intent);
             tabHost.addTab(spec);
 		}
         
