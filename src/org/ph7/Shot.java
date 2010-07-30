@@ -306,6 +306,7 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		intent.putExtra("picture-path", filename);
 		intent.putExtra("latitude", loc.getLatitude());
 		intent.putExtra("longitude", loc.getLongitude());
+		intent.putExtra("accuracy", loc.getAccuracy());
 		startActivity(intent);
 	}
 
