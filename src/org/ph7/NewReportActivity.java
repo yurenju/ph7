@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TabHost;
+import android.widget.TabWidget;
 
 public class NewReportActivity extends Activity implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,7 @@ public class NewReportActivity extends Activity implements OnClickListener {
         buttonGps.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
 				Intent intent = new Intent (Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-				startActivity(intent);
+				startActivityForResult(intent, 0);
 			}
 		});
     }
@@ -42,7 +44,8 @@ public class NewReportActivity extends Activity implements OnClickListener {
 	
 	protected void onActivityResult (int requestCode, int resultCode, Intent data) {
 		if (resultCode == RESULT_OK) {
-			
+			TabHost view = (TabHost)findViewById(R.layout.main);
+			view.setCurrentTab(1);			
 		}
 	}
 	

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/widget28"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<ListView android:id="@android:id/list" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:layout_below="@+id/ButtonOpenMap"
+		android:layout_alignParentLeft="true">
+	</ListView>
+	<Button android:id="@+id/ButtonOpenMap" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="Open in map"
+		android:layout_alignParentTop="true" android:layout_alignParentLeft="true">
+	</Button>
+</RelativeLayout>

@@ -309,7 +309,7 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		intent.putExtra("latitude", loc.getLatitude());
 		intent.putExtra("longitude", loc.getLongitude());
 		intent.putExtra("accuracy", loc.getAccuracy());
-		startActivity(intent);
+		startActivityForResult(intent, 0);
 	}
 
 	private Location getCurrentLocation() {
@@ -320,5 +320,11 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 				return l;
 		}
 		return null;
+	}
+	protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+		if (resultCode == RESULT_OK) {
+			setResult(RESULT_OK);
+			finish();
+		}
 	}
 }

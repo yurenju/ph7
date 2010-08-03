@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+	<TableRow android:layout_margin="5px">
+		<LinearLayout android:orientation="vertical"
+			android:layout_margin="5px" android:id="@+id/LocationColumn">
+			<TextView android:id="@+id/IssueType" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:text="TextView"
+				android:singleLine="false" android:textSize="18sp"
+				android:textStyle="bold">
+			</TextView>
+			<TextView android:id="@+id/LocationText"
+				android:layout_width="wrap_content" android:layout_height="fill_parent"
+				android:text="TextView" android:singleLine="false">
+			</TextView>
+		</LinearLayout>
+		<ImageView android:id="@+id/Thumbnail" android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+		</ImageView>
+	</TableRow>
+
+
+
+</TableLayout>

@@ -2,7 +2,6 @@ package org.ph7;
 
 import java.io.IOException;
 import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,8 +9,6 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -43,15 +40,13 @@ public class SubmitIssue extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.submitissue);
+		
+		Display d = getWindowManager().getDefaultDisplay();
+		int targetHeight = d.getHeight()/4;
+		
 		ImageView image = (ImageView)findViewById(R.id.ImagePreview);
-		Bitmap bm = BitmapFactory.decodeFile(imageFilename);
-		Matrix matrix = new Matrix ();
-		float ratio = getRatio(bm);
-		matrix.postScale(ratio, ratio);
-		matrix.postRotate(90);
-		Bitmap rbm = Bitmap.createBitmap(bm, 0, 0,
-				bm.getWidth(), bm.getHeight(), matrix, true);
-		image.setImageBitmap(rbm);
+		Bitmap bm = Util.getBitmap(imageFilename, targetHeight);
+		image.setImageBitmap(bm);
 		Geocoder geocoder = new Geocoder(this);
 		try {
 			List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 5);
@@ -90,6 +85,8 @@ public class SubmitIssue extends Activity {
 				SQLiteDatabase db = dbHelper.getWritableDatabase();
 				db.insert(DbOpenHelper.REPORTS_TABLE_NAME,
 						  DbOpenHelper.REPORT, values);
+				setResult(RESULT_OK);
+				finish();
 			}
 		});
 	}
@@ -113,11 +110,5 @@ public class SubmitIssue extends Activity {
 			break;
 		}
 		return null;
-	}
-	
-	private float getRatio (Bitmap bm) {
-		Display d = getWindowManager().getDefaultDisplay();
-		int targetHeight = d.getHeight()/4;
-		return ((float)targetHeight)/bm.getHeight();		
 	}
 }
