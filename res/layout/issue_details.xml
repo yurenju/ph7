@@ -12,6 +12,7 @@
 	<TextView android:id="@+id/TextIssueTypeDesc"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:text="Issue type:" android:layout_alignParentTop="true"
+		android:layout_marginLeft="5px"
 		android:layout_toRightOf="@+id/ImagePreviewDetail">
 	</TextView>
 
