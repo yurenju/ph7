@@ -11,7 +11,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
-import android.widget.TabWidget;
 
 public class NewReportActivity extends Activity implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {

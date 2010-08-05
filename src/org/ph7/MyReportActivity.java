@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MyReportActivity extends ListActivity {
@@ -27,13 +29,25 @@ public class MyReportActivity extends ListActivity {
         setListAdapter(issueAdapter);
 	}
 	
+	protected void onListItemClick (ListView listview, View view, int position, long id) {
+		int localId = issueAdapter.getIssueId(position);
+		Intent intent = new Intent ();
+		intent.setClass(this, IssueDetails.class);
+		intent.putExtra("id", localId);
+		startActivity(intent);
+	}
+	
 	
 	public class IssueAdapter extends BaseAdapter {
 		private final static int THUMBNAIL_HEIGHT = 80;
 		private LayoutInflater inflater;
 		private SQLiteDatabase db;
 		private ArrayList<Issue> issueList = new ArrayList<Issue>();
-		private int displayWidth = 0; 
+		private int displayWidth = 0;
+		
+		public int getIssueId (int position) {
+			return issueList.get(position).id;
+		}
 		
 		public IssueAdapter (Context context) {
 			Display d = getWindowManager().getDefaultDisplay();
@@ -42,7 +56,7 @@ public class MyReportActivity extends ListActivity {
 			db = helper.getReadableDatabase();
 			inflater = LayoutInflater.from(context);
 			
-			Cursor c = db.rawQuery("SELECT location, issue_type, image_filename FROM " + 
+			Cursor c = db.rawQuery("SELECT location, issue_type, image_filename, local_id FROM " + 
 									DbOpenHelper.REPORTS_TABLE_NAME, null);
 			if (c == null)
 				return;
@@ -57,6 +71,7 @@ public class MyReportActivity extends ListActivity {
 					issue.location = c.getString(0);
 					issue.type = items[index];
 					issue.imagePath = c.getString(2);
+					issue.id = c.getInt(3);
 					issueList.add(issue);
 				}
 			} finally {
@@ -103,6 +118,8 @@ public class MyReportActivity extends ListActivity {
 			return convertView;
 		}
 		
+
+		
 		class ViewHolder {
 			TextView locationText;
 			TextView typeText;
@@ -113,6 +130,7 @@ public class MyReportActivity extends ListActivity {
 			String location;
 			String type;
 			String imagePath;
+			int id;
 		}
 	}
 }

@@ -1,80 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-android:id="@+id/widget28"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:padding="5px"
->
-<Button
-android:id="@+id/ButtonSubmit"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Submit report"
-android:layout_alignParentBottom="true"
-android:layout_centerHorizontal="true"
->
-</Button>
+<RelativeLayout android:id="@+id/widget28"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:padding="5px">
+	<Button android:id="@+id/ButtonSubmit" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:text="Submit report"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true">
+	</Button>
 
-<ImageView
-android:id="@+id/ImagePreview"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:padding="1px"
-android:layout_margin="5px"
-android:background="@android:color/white"
-android:layout_alignParentLeft="true">
-</ImageView>
-<TextView
-android:id="@+id/TextIssueType"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Issue type:"
-android:layout_toRightOf="@+id/ImagePreview"
-android:layout_alignTop="@+id/ImagePreview"
-></TextView>
-<TextView
-android:id="@+id/TextLocationDescription"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Location:"
-android:layout_below="@+id/ButtonIssueType"
-android:layout_alignLeft="@+id/TextIssueType"
-android:layout_marginTop="10px"
-></TextView>
-<TextView
-android:id="@+id/TextLocation"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_below="@+id/TextLocationDescription"
-android:layout_alignLeft="@+id/TextLocationDescription"
-></TextView>
-<Button
-android:id="@+id/ButtonIssueType"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Select IssueType"
-android:paddingLeft="20px"
-android:paddingRight="20px"
-android:layout_below="@+id/TextIssueType"
-android:layout_alignLeft="@+id/TextIssueType"
-></Button>
-<TextView
-android:id="@+id/TextAdditionalInfo"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Additional Information:"
-android:layout_marginTop="5px"
-android:layout_below="@+id/ImagePreview"
-></TextView>
+	<ImageView android:id="@+id/ImagePreview"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:padding="1px" android:layout_margin="5px" android:background="@android:color/white"
+		android:layout_alignParentLeft="true">
+	</ImageView>
+	
+	<TextView android:id="@+id/TextIssueType"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Issue type:" android:layout_toRightOf="@+id/ImagePreview"
+		android:layout_alignTop="@+id/ImagePreview"></TextView>
 
-<EditText
-android:id="@+id/EditAdditional"
-android:hint="Optional" 
-android:layout_height="wrap_content" 
-android:layout_below="@+id/TextAdditionalInfo" 
-android:layout_width="fill_parent"
-android:gravity="top|left"
-android:lines="4"></EditText>
+	<TextView android:id="@+id/TextLocationDescription"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Location:" android:layout_below="@+id/ButtonIssueType"
+		android:layout_alignLeft="@+id/TextIssueType"
+		android:layout_marginTop="10px"></TextView>
+
+	<TextView android:id="@+id/TextLocation" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_below="@+id/TextLocationDescription"
+		android:layout_alignLeft="@+id/TextLocationDescription"></TextView>
+
+	<Button android:id="@+id/ButtonIssueType" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:text="Select IssueType"
+		android:paddingLeft="20px" android:paddingRight="20px"
+		android:layout_below="@+id/TextIssueType" android:layout_alignLeft="@+id/TextIssueType"></Button>
+
+	<TextView android:id="@+id/TextAdditionalInfo"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Additional Information:" android:layout_marginTop="5px"
+		android:layout_below="@+id/ImagePreview"></TextView>
+
+	<EditText android:id="@+id/EditAdditional" android:hint="Optional"
+		android:layout_height="wrap_content" android:layout_below="@+id/TextAdditionalInfo"
+		android:layout_width="fill_parent" android:gravity="top|left"
+		android:lines="4"></EditText>
 
 </RelativeLayout>

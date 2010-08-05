@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/widget28"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:padding="5px" xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<ImageView android:id="@+id/ImagePreviewDetail"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:background="@android:color/white" android:padding="1px"
+		android:layout_alignParentTop="true" android:layout_alignParentLeft="true">
+	</ImageView>
+
+	<TextView android:id="@+id/TextIssueTypeDesc"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Issue type:" android:layout_alignParentTop="true"
+		android:layout_toRightOf="@+id/ImagePreviewDetail">
+	</TextView>
+
+	<TextView android:id="@+id/TextIssueType"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Issue Type" android:layout_below="@+id/TextIssueTypeDesc"
+		android:layout_alignLeft="@+id/TextIssueTypeDesc">
+	</TextView>
+
+	<TextView android:id="@+id/TextLocationDesc"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_marginTop="10px" android:text="Location:"
+		android:layout_below="@+id/TextIssueType" android:layout_alignLeft="@+id/TextIssueType">
+	</TextView>
+
+	<TextView android:id="@+id/TextLocation" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_below="@+id/TextLocationDesc"
+		android:layout_alignLeft="@+id/TextLocationDesc">
+	</TextView>
+
+	<TextView android:id="@+id/TextCreatedTimeDesc"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Created time:" android:layout_below="@+id/TextLocation"
+		android:layout_alignLeft="@+id/TextIssueTypeDesc">
+	</TextView>
+
+	<TextView android:id="@+id/TextCreatedTime"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="[Created time]" android:layout_below="@+id/TextCreatedTimeDesc"
+		android:layout_alignLeft="@+id/TextIssueTypeDesc">
+	</TextView>
+
+	<TextView android:id="@+id/TextAdditionalInfoDesc"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_marginTop="5px" android:text="Additional Information:"
+		android:layout_below="@+id/ImagePreviewDetail"
+		android:layout_alignParentLeft="true">
+	</TextView>
+
+	<TextView android:id="@+id/TextAdditionalInfo"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_above="@+id/TextCreatedTimeDesc"
+		android:layout_alignParentLeft="true">
+	</TextView>
+
+	<Button android:id="@+id/ButtonOpenOnMap" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="Open in map"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true">
+	</Button>
+
+</RelativeLayout>
