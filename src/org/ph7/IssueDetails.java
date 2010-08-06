@@ -1,5 +1,7 @@
 package org.ph7;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -48,11 +50,15 @@ public class IssueDetails extends Activity {
 			String[] items = getResources().getStringArray(R.array.issue_items);
 
 			int index = c.getInt(1);
+			long ldate = c.getLong(4);
+			Date date = new Date(ldate);
+			SimpleDateFormat df =  new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			String dateStr = df.format(date);
 			((TextView) findViewById(R.id.TextLocation))
 					.setText(c.getString(0));
 			((TextView) findViewById(R.id.TextIssueType)).setText(items[index]);
 			((TextView) findViewById(R.id.TextCreatedTime))
-					.setText(String.valueOf(c.getInt(4)));
+					.setText(dateStr);
 			
 			latitude = c.getFloat(5);
 			longitude = c.getFloat(6);
