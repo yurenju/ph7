@@ -19,14 +19,14 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:layout_alignParentBottom="true"
 android:layout_alignParentLeft="true"
-android:text="Take a shot"
+android:text="@string/take_a_shot"
 >
 </Button>
 <TextView
 android:id="@+id/TextLocation"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text="Getting location"
+android:text="@string/getting_location"
 
 android:layout_marginBottom="5px"
 android:layout_marginLeft="5px"

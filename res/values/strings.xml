@@ -3,9 +3,27 @@
     <string name="hello">Hello World, main!</string>
     <string name="app_name">ph7</string>
 <string name="select_issue_type">Select issue type: </string>
+<string name="issue_type_colon">Issue type: </string>
+<string name="issue_type">Issue type</string>
+<string name="location_colon">Location: </string>
+<string name="created_time_colon">Created time: </string>
+<string name="additional_info_colon">Additional information: </string>
+<string name="open_on_map">Open on map</string>
+<string name="new_report">New report</string>
+<string name="my_reports">My reports</string>
+<string name="location_settings">Location settings</string>
+<string name="location_provider_status_colon">Location provider status:</string>
+<string name="enable_at_least_one_provider">Please enable at least one network provider</string>
+<string name="gps_satellites">GPS satellites</string>
+<string name="wireless_network">Wireless network</string>
+<string name="take_a_shot">Take a shot</string>
+<string name="getting_location">Getting location</string>
+<string name="submit_report">Submit report</string>
+<string name="optional">Optional</string>
+
 <string-array name="issue_items">
 	<item>Animal</item>
-	<item>Graffti</item>
+	<item>Graffiti</item>
 	<item>Homeless</item>
 	<item>Illegal fire/burning</item>
 	<item>Parking</item>

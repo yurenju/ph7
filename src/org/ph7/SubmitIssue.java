@@ -35,7 +35,7 @@ public class SubmitIssue extends Activity {
 		
 		latitude = getIntent().getExtras().getDouble("latitude");
 		longitude = getIntent().getExtras().getDouble("longitude");
-		accuracy = getIntent().getExtras().getDouble("accuracy");
+		accuracy = getIntent().getExtras().getFloat("accuracy");
 		imageFilename = getIntent().getExtras().getString("picture-path");
 		
 		super.onCreate(savedInstanceState);

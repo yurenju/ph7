@@ -7,7 +7,7 @@
 		android:layout_alignParentLeft="true">
 	</ListView>
 	<Button android:id="@+id/ButtonOpenMap" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="Open in map"
+		android:layout_height="wrap_content" android:text="@string/open_on_map"
 		android:layout_alignParentTop="true" android:layout_alignParentLeft="true">
 	</Button>
 </RelativeLayout>

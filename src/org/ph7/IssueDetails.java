@@ -2,16 +2,23 @@ package org.ph7;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class IssueDetails extends Activity {
 	private SQLiteDatabase db;
+	private float latitude;
+	private float longitude;
+	private float accuracy;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +29,7 @@ public class IssueDetails extends Activity {
 		int id = getIntent().getExtras().getInt("id");
 
 		String[] columns = { "location", "issue_type", "image_filename",
-				"local_id", "created_time" };
+				"local_id", "created_time", "latitude", "longitude", "accuracy"};
 		String[] args = { String.valueOf(id) };
 		Cursor c = null;
 		try {
@@ -46,6 +53,10 @@ public class IssueDetails extends Activity {
 			((TextView) findViewById(R.id.TextIssueType)).setText(items[index]);
 			((TextView) findViewById(R.id.TextCreatedTime))
 					.setText(String.valueOf(c.getInt(4)));
+			
+			latitude = c.getFloat(5);
+			longitude = c.getFloat(6);
+			accuracy = c.getFloat(7);
 
 			Display d = getWindowManager().getDefaultDisplay();
 			int targetHeight = d.getHeight() / 4;
@@ -58,6 +69,17 @@ public class IssueDetails extends Activity {
 		} finally {
 			c.close();
 		}
-
+		
+		Button btn = ((Button)findViewById(R.id.ButtonOpenOnMap));
+		btn.setOnClickListener(new OnClickListener() {
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(IssueDetails.this, Map.class);
+				intent.putExtra("latitude", latitude);
+				intent.putExtra("longitude", longitude);
+				intent.putExtra("accuracy", accuracy);
+				startActivity(intent);
+			}
+		});
 	}
 }

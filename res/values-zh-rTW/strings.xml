@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, main!</string>
+    <string name="app_name">ph7</string>
+<string name="select_issue_type">選擇公害類型：</string>
+<string name="issue_type_colon">公害類型：</string>
+<string name="issue_type">公害類型</string>
+<string name="location_colon">位置：</string>
+<string name="created_time_colon">建立時間：</string>
+<string name="additional_info_colon">其他資訊： </string>
+<string name="open_on_map">在地圖開啟</string>
+<string name="new_report">回報公害</string>
+<string name="my_reports">我的回報</string>
+<string name="location_settings">系統定位設定</string>
+<string name="location_provider_status_colon">可用的定位方式：</string>
+<string name="enable_at_least_one_provider">請至少啟用無線網路定位方式</string>
+<string name="gps_satellites">GPS 衛星定位</string>
+<string name="wireless_network">無線網路定位</string>
+<string name="take_a_shot">拍攝公害照片</string>
+<string name="getting_location">定位照片中</string>
+<string name="submit_report">發布公害回報</string>
+<string name="optional">選擇性填寫</string>
+
+<string-array name="issue_items">
+	<item>動物相關</item>
+	<item>塗鴉</item>
+	<item>遊民相關</item>
+	<item>非法燃燒/火災</item>
+	<item>違規停車</item>
+	<item>倒塌的樹/其他植物相關</item>
+	<item>車道毀損/其他相關</item>
+	<item>人行道/路燈相關</item>
+	<item>垃圾相關</item>
+	<item>廢棄車輛</item>
+	<item>積水</item>
+	<item>噪音污染</item>
+</string-array>
+</resources>

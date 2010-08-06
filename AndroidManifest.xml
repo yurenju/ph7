@@ -18,13 +18,15 @@
 <activity android:name="Shot" android:screenOrientation="portrait"></activity>
 <activity android:name="SubmitIssue"></activity>
 <activity android:name="IssueDetails"></activity>
+<uses-library android:name="com.google.android.maps" />
+<activity android:name="Map"></activity>
 </application>
 
 
 
 
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-
+<uses-permission android:name="android.permission.INTERNET" />
 
 <uses-permission android:name="android.permission.CAMERA"></uses-permission>
 </manifest> 
