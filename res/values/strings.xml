@@ -20,6 +20,7 @@
 <string name="getting_location">Getting location</string>
 <string name="submit_report">Submit report</string>
 <string name="optional">Optional</string>
+<string name="getting_address">Getting address</string>
 
 <string-array name="issue_items">
 	<item>Animal</item>
