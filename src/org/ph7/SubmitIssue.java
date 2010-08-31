@@ -5,6 +5,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,6 +13,8 @@ import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,6 +24,7 @@ import android.widget.TextView;
 
 public class SubmitIssue extends Activity {
 	private static final int SELECT_ISSUE_TYPE = 0;
+	private static final int PROGRESSBAR =  1;
 	private DbOpenHelper dbHelper;
 	private String locationText;
 	private double latitude;
@@ -28,7 +32,30 @@ public class SubmitIssue extends Activity {
 	private double accuracy;
 	private int issueType;
 	private String imageFilename;
+	private ProgressDialog progressDialog;
 
+	final Handler handler = new Handler () {
+		public void handleMessage (Message msg) {
+			((TextView)findViewById(R.id.TextLocation)).setText(locationText);
+			dismissDialog(PROGRESSBAR);
+		}
+	};
+	
+	Thread getAddressThread = new Thread() {
+		public void run () {
+			Geocoder geocoder = new Geocoder(SubmitIssue.this);
+			try {
+				List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 5);
+				if (!addresses.isEmpty()) {
+					locationText = addresses.get(0).getAddressLine(0);				
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			handler.sendEmptyMessage(0);
+		}
+	};
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		dbHelper = new DbOpenHelper(this.getApplicationContext());
@@ -47,16 +74,9 @@ public class SubmitIssue extends Activity {
 		ImageView image = (ImageView)findViewById(R.id.ImagePreview);
 		Bitmap bm = Util.getBitmap(imageFilename, targetHeight);
 		image.setImageBitmap(bm);
-		Geocoder geocoder = new Geocoder(this);
-		try {
-			List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 5);
-			if (!addresses.isEmpty()) {
-				locationText = addresses.get(0).getAddressLine(0);
-				((TextView)findViewById(R.id.TextLocation)).setText(locationText);				
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
+		showDialog(PROGRESSBAR);
+		getAddressThread.start();
 		
 		Button selectButton = (Button)findViewById(R.id.ButtonIssueType);
 		selectButton.setOnClickListener(new OnClickListener() {			
@@ -105,6 +125,12 @@ public class SubmitIssue extends Activity {
 						issueType = which;
 					}
 				}).create();
+		case PROGRESSBAR:
+			progressDialog = new ProgressDialog(this);
+			progressDialog.setMessage(getResources().getString(R.string.getting_address));
+			progressDialog.setIndeterminate(true);
+			progressDialog.setCancelable(true);
+			return progressDialog;
 
 		default:
 			break;
