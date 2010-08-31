@@ -59,6 +59,7 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 			} catch (IllegalArgumentException ex) {
 				Log.d(TAG, "provider does not exist " + ex.getMessage());
 			}
+			
 			try {
 				mLocationManager.requestLocationUpdates(
 						LocationManager.GPS_PROVIDER, 1000, 0F,
@@ -194,11 +195,6 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		}
 
 		public void onLocationChanged(Location newLocation) {
-//			Log.d(TAG, "onLocationChanged");
-//			Log.d(TAG, newLocation.getLatitude() + ", " + newLocation.getLongitude());
-//			builder.setMessage(newLocation.getLatitude() + ", " + newLocation.getLongitude());
-//			AlertDialog alert = builder.create();
-//			alert.show();
 			showLocation(newLocation);
 			
 			if (newLocation.getLatitude() == 0.0
