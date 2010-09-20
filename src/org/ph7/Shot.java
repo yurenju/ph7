@@ -2,6 +2,8 @@ package org.ph7;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.Intent;
@@ -22,26 +24,24 @@ import android.view.SurfaceHolder.Callback;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
-
-import org.apache.sanselan.ImageReadException;
-import org.apache.sanselan.ImageWriteException;
 import org.apache.sanselan.formats.jpeg.exifRewrite.ExifRewriter;
 import org.apache.sanselan.formats.tiff.write.TiffOutputSet;
 
 public class Shot extends Activity implements Callback, AutoFocusCallback,
 		OnClickListener, Camera.PictureCallback {
 	private static final String TAG = "Shot";
+	private static final int PROGRESSBAR = 0;
+	private ProgressDialog progressDialog;
 	SurfaceHolder mHolder;
 	SurfaceView surfaceView;
 	Camera mCamera;
 	LocationManager mLocationManager;
 	Builder builder;
+	private String filename = null;
 
 	LocationListener[] mLocationListeners = new LocationListener[] {
 			new LocationListener(LocationManager.GPS_PROVIDER),
@@ -196,16 +196,20 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 
 		public void onLocationChanged(Location newLocation) {
 			showLocation(newLocation);
-			
+						
 			if (newLocation.getLatitude() == 0.0
 					&& newLocation.getLongitude() == 0.0) {
 				// Hack to filter out 0.0,0.0 locations
 				return;
 			}
+			
+			if (progressDialog != null && progressDialog.isShowing()) {
+				progressDialog.dismiss();
+				startSubmitIssue(newLocation);
+			}
 
 			mLastLocation.set(newLocation);
-			mValid = true;
-			
+			mValid = true;			
 		}
 
 		public void onProviderEnabled(String provider) {
@@ -218,15 +222,15 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		public void onStatusChanged(String provider, int status, Bundle extras) {
 			switch (status) {
 			case LocationProvider.OUT_OF_SERVICE: {
-				Log.d (TAG, "OUT_OF_SERVICE");
+				Log.d(TAG, "OUT_OF_SERVICE");
 			}
 			case LocationProvider.TEMPORARILY_UNAVAILABLE: {
-				Log.d (TAG, "TEMPORARILY_UNAVAILABLE");
+				Log.d(TAG, "TEMPORARILY_UNAVAILABLE");
 				mValid = false;
 				break;
 			}
 			case LocationProvider.AVAILABLE: {
-				Log.d (TAG, "AVAILABLE");
+				Log.d(TAG, "AVAILABLE");
 			}
 			}
 		}
@@ -272,7 +276,7 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 		TiffOutputSet outset = new TiffOutputSet();
 		Location loc = getCurrentLocation();
 		File dir = getStorageDir();
-		String filename = String.format("%s/%d.jpg",
+		filename = String.format("%s/%d.jpg",
 				dir.toString(), System.currentTimeMillis());
 		
 		try {
@@ -288,18 +292,22 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 				outStream.write(data);	
 			}
 			outStream.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ImageWriteException e) {
-			e.printStackTrace();
-		} catch (ImageReadException e) {
-			e.printStackTrace();
-		} finally {
-		}
+		} catch (Exception e) {
+			Log.e(TAG, e.getMessage());
+		} 
+
 		Log.d(TAG, "onPictureTaken - jpeg");
-		showLocation (getCurrentLocation());
+
+		if (loc == null) {
+			showDialog(PROGRESSBAR);
+		}
+		else {
+			showLocation (loc);
+			startSubmitIssue(loc);	
+		}
+	}
+	
+	private void startSubmitIssue (Location loc) {
 		Intent intent = new Intent().setClass(this, SubmitIssue.class);
 		intent.putExtra("picture-path", filename);
 		intent.putExtra("latitude", loc.getLatitude());
@@ -322,5 +330,21 @@ public class Shot extends Activity implements Callback, AutoFocusCallback,
 			setResult(RESULT_OK);
 			finish();
 		}
+	}
+	
+	@Override
+	protected Dialog onCreateDialog (int id) {
+		switch (id) {
+		case PROGRESSBAR:
+			progressDialog = new ProgressDialog(this);
+			progressDialog.setMessage(getResources().getString(R.string.getting_location));
+			progressDialog.setIndeterminate(true);
+			progressDialog.setCancelable(true);
+			return progressDialog;
+
+		default:
+			break;
+		}
+		return null;
 	}
 }
