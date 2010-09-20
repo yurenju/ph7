@@ -30,7 +30,7 @@ public class SubmitIssue extends Activity {
 	private double latitude;
 	private double longitude;
 	private double accuracy;
-	private int issueType;
+	private int issueType = -1;
 	private String imageFilename;
 	private ProgressDialog progressDialog;
 
@@ -121,6 +121,7 @@ public class SubmitIssue extends Activity {
 					public void onClick(DialogInterface dialog, int which) {
 						String[] items = getResources().getStringArray(R.array.issue_items);
 						Button btn = (Button) findViewById(R.id.ButtonIssueType);
+						((Button)findViewById(R.id.ButtonSubmit)).setEnabled(true);
 						btn.setText(items[which]);
 						issueType = which;
 					}

@@ -6,7 +6,8 @@
 	<Button android:id="@+id/ButtonSubmit" android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:text="@string/submit_report"
 		android:layout_alignParentBottom="true"
-		android:layout_centerHorizontal="true">
+		android:layout_centerHorizontal="true"
+		android:enabled="false">
 	</Button>
 
 	<ImageView android:id="@+id/ImagePreview"
