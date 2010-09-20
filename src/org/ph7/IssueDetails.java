@@ -21,6 +21,7 @@ public class IssueDetails extends Activity {
 	private float latitude;
 	private float longitude;
 	private float accuracy;
+	private String comment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class IssueDetails extends Activity {
 		int id = getIntent().getExtras().getInt("id");
 
 		String[] columns = { "location", "issue_type", "image_filename",
-				"local_id", "created_time", "latitude", "longitude", "accuracy"};
+				"local_id", "created_time", "latitude", "longitude", "accuracy", "comment"};
 		String[] args = { String.valueOf(id) };
 		Cursor c = null;
 		try {
@@ -51,6 +52,7 @@ public class IssueDetails extends Activity {
 
 			int index = c.getInt(1);
 			long ldate = c.getLong(4);
+			comment = c.getString(8) == null ? "" : c.getString(8);
 			Date date = new Date(ldate);
 			SimpleDateFormat df =  new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			String dateStr = df.format(date);
@@ -59,10 +61,12 @@ public class IssueDetails extends Activity {
 			((TextView) findViewById(R.id.TextIssueType)).setText(items[index]);
 			((TextView) findViewById(R.id.TextCreatedTime))
 					.setText(dateStr);
+			((TextView) findViewById(R.id.TextAdditionalInfo)).setText(comment);
 			
 			latitude = c.getFloat(5);
 			longitude = c.getFloat(6);
 			accuracy = c.getFloat(7);
+			
 
 			Display d = getWindowManager().getDefaultDisplay();
 			int targetHeight = d.getHeight() / 4;

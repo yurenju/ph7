@@ -88,7 +88,7 @@ public class SubmitIssue extends Activity {
 		Button submitBtn = (Button)findViewById(R.id.ButtonSubmit);
 		submitBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
-				String comment = ((TextView)findViewById(R.id.TextAdditionalInfo))
+				String comment = ((TextView)findViewById(R.id.EditAdditional))
 									.getText().toString();
 				Long  now = Long.valueOf(System.currentTimeMillis());
 				
