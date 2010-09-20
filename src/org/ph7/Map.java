@@ -24,7 +24,8 @@ public class Map extends MapActivity {
         float accuracy = getIntent().getExtras().getFloat("accuracy");
         
         List<Overlay> mapOverlays = mapView.getOverlays();
-        Drawable drawable = this.getResources().getDrawable(R.drawable.androidmarker);
+		Drawable drawable = this.getResources().getDrawable(
+				R.drawable.ic_maps_indicator_current_position);
         Ph7ItemizedOverlay itemizedoverlay = new Ph7ItemizedOverlay(drawable, this);
         itemizedoverlay.setAccuracy(accuracy);
         GeoPoint point = new GeoPoint(latitudeE6, longitudeE6);
