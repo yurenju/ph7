@@ -21,6 +21,7 @@
 <string name="submit_report">發布公害回報</string>
 <string name="optional">選擇性填寫</string>
 <string name="getting_address">取得位址中</string>
+<string name="loading">讀取中...</string>
 
 <string-array name="issue_items">
 	<item>動物相關</item>

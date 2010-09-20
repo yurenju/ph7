@@ -13,20 +13,28 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class MyReportActivity extends ListActivity {
+public class MyReportActivity extends ListActivity implements OnScrollListener {
 	IssueAdapter issueAdapter;
+	boolean busy = false;
+	private final static int THUMBNAIL_HEIGHT = 80;
+	private int displayWidth = 0;
 	
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		Display d = getWindowManager().getDefaultDisplay();
+		displayWidth = d.getWidth();
 		issueAdapter = new IssueAdapter(this);
         setContentView(R.layout.listissues);
         setListAdapter(issueAdapter);
+        getListView().setOnScrollListener(this);
 	}
 	
 	protected void onListItemClick (ListView listview, View view, int position, long id) {
@@ -37,21 +45,28 @@ public class MyReportActivity extends ListActivity {
 		startActivity(intent);
 	}
 	
+	private void settingHolder (ViewHolder holder, Issue issue) {
+		Bitmap bm = Util.getBitmap(issue.imagePath, THUMBNAIL_HEIGHT);
+		int textWidth = displayWidth - bm.getWidth() - 20; // 20 is margin
+		holder.locationText.setText(issue.location);
+		holder.typeText.setText(issue.type);
+		holder.locationText.setWidth(textWidth);
+		holder.typeText.setWidth(textWidth);
+		holder.thumbnail.setImageBitmap(bm);
+		holder.loading = false;
+	}
 	
 	public class IssueAdapter extends BaseAdapter {
-		private final static int THUMBNAIL_HEIGHT = 80;
 		private LayoutInflater inflater;
 		private SQLiteDatabase db;
 		private ArrayList<Issue> issueList = new ArrayList<Issue>();
-		private int displayWidth = 0;
+		
 		
 		public int getIssueId (int position) {
 			return issueList.get(position).id;
 		}
 		
 		public IssueAdapter (Context context) {
-			Display d = getWindowManager().getDefaultDisplay();
-			displayWidth = d.getWidth();
 			DbOpenHelper helper = new DbOpenHelper(getApplicationContext());
 			db = helper.getReadableDatabase();
 			inflater = LayoutInflater.from(context);
@@ -107,30 +122,64 @@ public class MyReportActivity extends ListActivity {
 			else {
 				holder = (ViewHolder)convertView.getTag();
 			}
-			Bitmap bm = Util.getBitmap(issue.imagePath, THUMBNAIL_HEIGHT);
-			int textWidth = displayWidth - bm.getWidth() - 20; // 20 is margin
-			holder.locationText.setText(issue.location);
-			holder.typeText.setText(issue.type);
-			holder.locationText.setWidth(textWidth);
-			holder.typeText.setWidth(textWidth);
-			holder.thumbnail.setImageBitmap(bm);
+			
+			if (!busy) {
+				settingHolder(holder, issue);
+			} else {
+				holder.typeText.setText(R.string.loading);
+				holder.locationText.setText(null);
+				holder.thumbnail.setImageResource(R.drawable.loading);
+				holder.loading = true;
+			}
 			
 			return convertView;
 		}
-		
 
-		
-		class ViewHolder {
-			TextView locationText;
-			TextView typeText;
-			ImageView thumbnail;
+		public ArrayList<Issue> getIssueList() {
+			return issueList;
 		}
-		
-		class Issue {
-			String location;
-			String type;
-			String imagePath;
-			int id;
+	}
+	
+	class ViewHolder {
+		TextView locationText;
+		TextView typeText;
+		ImageView thumbnail;
+		boolean loading = false;
+	}
+	
+	class Issue {
+		String location;
+		String type;
+		String imagePath;
+		int id;
+	}
+
+
+	public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
+	}
+
+	public void onScrollStateChanged(AbsListView view, int scrollState) {
+		switch (scrollState) {
+		case OnScrollListener.SCROLL_STATE_IDLE:
+			busy = false;
+			int first = view.getFirstVisiblePosition();
+			int count = view.getChildCount();
+			for (int i = 0; i < count; i++) {
+				View child = view.getChildAt(i);
+				ViewHolder holder = (ViewHolder)child.getTag();
+				if (holder.loading) {
+					Issue issue = issueAdapter.getIssueList().get(first+i);
+					settingHolder(holder, issue);
+				}
+			}
+			break;
+		case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+		case OnScrollListener.SCROLL_STATE_FLING:
+			busy = true;
+			break;
+
+		default:
+			break;
 		}
 	}
 }
