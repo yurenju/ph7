@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, main!</string>
     <string name="app_name">ph7</string>
-<string name="select_issue_type">選擇公害類型：</string>
+<string name="select_issue_type">選擇公害類型</string>
 <string name="issue_type_colon">公害類型：</string>
 <string name="issue_type">公害類型</string>
 <string name="location_colon">位置：</string>

@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, main!</string>
     <string name="app_name">ph7</string>
-<string name="select_issue_type">Select issue type: </string>
+<string name="select_issue_type">Select issue type</string>
 <string name="issue_type_colon">Issue type: </string>
 <string name="issue_type">Issue type</string>
 <string name="location_colon">Location: </string>
