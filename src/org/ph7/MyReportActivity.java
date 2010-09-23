@@ -65,6 +65,7 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 			holder.locationText.setWidth(textWidth);
 			holder.typeText.setWidth(textWidth);
 			holder.thumbnail.setImageBitmap(thumbnails[index]);
+			Log.i("ph7", "index: " + index);
 		}
 	};
 	
@@ -78,21 +79,19 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		}
 		
 		public void run() {
-			Bitmap bm = null;
-			
+			Bitmap bm = null;			
 			try {
 				bm = Util.getBitmap(imagePath, THUMBNAIL_HEIGHT);
 			}
 			catch (Exception e) {
 				Log.e ("ph7", e.getMessage());
 			}
-
 			thumbnails[index] = bm;
 			Message msg = Message.obtain();
 			Bundle data = new Bundle();
 			data.putInt("index", index);
 			msg.setData(data);
-			handler.sendMessage(msg);	
+			handler.sendMessage(msg);
 		}
 	}
 	
@@ -101,6 +100,7 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		holder.locationText.setText(issue.location);
 		holder.typeText.setText(issue.type);
 		holder.loading = false;	
+		Log.i("ph7", "settingHolder index: " + index);
 		executor.execute(new LoadBitmapTask(index, issue.imagePath));
 	}
 	
