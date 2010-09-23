@@ -1,6 +1,8 @@
 package org.ph7;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import android.app.ListActivity;
 import android.content.Context;
@@ -9,6 +11,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +30,8 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 	boolean busy = false;
 	private final static int THUMBNAIL_HEIGHT = 80;
 	private int displayWidth = 0;
+	private Bitmap[] thumbnails;
+	private Executor executor = Executors.newFixedThreadPool(1);
 	
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,6 +39,8 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		Display d = getWindowManager().getDefaultDisplay();
 		displayWidth = d.getWidth();
 		issueAdapter = new IssueAdapter(this);
+		thumbnails = new Bitmap[issueAdapter.getCount()];
+		
         setContentView(R.layout.listissues);
         setListAdapter(issueAdapter);
         getListView().setOnScrollListener(this);
@@ -45,15 +54,54 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		startActivity(intent);
 	}
 	
+	Handler handler = new Handler() {
+		public void handleMessage (Message msg) {
+			int index = msg.getData().getInt("index");
+			View view = getListView().getChildAt(index);
+			if (view == null)
+				return;
+			ViewHolder holder = (ViewHolder)view.getTag();
+			int textWidth = displayWidth - thumbnails[index].getWidth() - 20; // 20 is margin
+			holder.locationText.setWidth(textWidth);
+			holder.typeText.setWidth(textWidth);
+			holder.thumbnail.setImageBitmap(thumbnails[index]);
+		}
+	};
+	
+	private class LoadBitmapTask implements Runnable {
+		String imagePath = null;
+		int index = 0;
+		
+		public LoadBitmapTask (int index, String imagePath) {
+			this.imagePath = imagePath;
+			this.index = index;
+		}
+		
+		public void run() {
+			Bitmap bm = null;
+			
+			try {
+				bm = Util.getBitmap(imagePath, THUMBNAIL_HEIGHT);
+			}
+			catch (Exception e) {
+				Log.e ("ph7", e.getMessage());
+			}
+
+			thumbnails[index] = bm;
+			Message msg = Message.obtain();
+			Bundle data = new Bundle();
+			data.putInt("index", index);
+			msg.setData(data);
+			handler.sendMessage(msg);	
+		}
+	}
+	
 	private void settingHolder (ViewHolder holder, Issue issue) {
-		Bitmap bm = Util.getBitmap(issue.imagePath, THUMBNAIL_HEIGHT);
-		int textWidth = displayWidth - bm.getWidth() - 20; // 20 is margin
+		int index = issueAdapter.getIssueList().indexOf(issue);
 		holder.locationText.setText(issue.location);
 		holder.typeText.setText(issue.type);
-		holder.locationText.setWidth(textWidth);
-		holder.typeText.setWidth(textWidth);
-		holder.thumbnail.setImageBitmap(bm);
-		holder.loading = false;
+		holder.loading = false;	
+		executor.execute(new LoadBitmapTask(index, issue.imagePath));
 	}
 	
 	public class IssueAdapter extends BaseAdapter {
