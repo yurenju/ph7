@@ -40,6 +40,9 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		displayWidth = d.getWidth();
 		issueAdapter = new IssueAdapter(this);
 		thumbnails = new Bitmap[issueAdapter.getCount()];
+		for (Bitmap t : thumbnails) {
+			t = null;
+		}
 		
         setContentView(R.layout.listissues);
         setListAdapter(issueAdapter);
@@ -57,9 +60,19 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 	Handler handler = new Handler() {
 		public void handleMessage (Message msg) {
 			int index = msg.getData().getInt("index");
-			View view = getListView().getChildAt(index);
-			if (view == null)
-				return;
+			String imagePath = msg.getData().getString("image-path");
+			View view = null;
+			for (int i = 0; i < getListView().getChildCount(); i++) {
+				view = getListView().getChildAt(i);
+				ViewHolder holder = (ViewHolder)view.getTag();
+				if (holder.issue.imagePath.compareTo(imagePath) == 0) {
+					break;
+				}
+				view = null;
+			}
+			
+			if (view == null) return;
+
 			ViewHolder holder = (ViewHolder)view.getTag();
 			int textWidth = displayWidth - thumbnails[index].getWidth() - 20; // 20 is margin
 			holder.locationText.setWidth(textWidth);
@@ -79,17 +92,20 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		}
 		
 		public void run() {
-			Bitmap bm = null;			
-			try {
-				bm = Util.getBitmap(imagePath, THUMBNAIL_HEIGHT);
-			}
-			catch (Exception e) {
-				Log.e ("ph7", e.getMessage());
-			}
-			thumbnails[index] = bm;
 			Message msg = Message.obtain();
+			if (thumbnails[index] == null) {
+				Bitmap bm = null;
+				try {
+					bm = Util.getBitmap(imagePath, THUMBNAIL_HEIGHT);
+				}
+				catch (Exception e) {
+					Log.e ("ph7", e.getMessage());
+				}
+				thumbnails[index] = bm;
+			}
 			Bundle data = new Bundle();
 			data.putInt("index", index);
+			data.putString("image-path", imagePath);
 			msg.setData(data);
 			handler.sendMessage(msg);
 		}
@@ -170,6 +186,7 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 			else {
 				holder = (ViewHolder)convertView.getTag();
 			}
+			holder.issue = issue;
 			
 			if (!busy) {
 				settingHolder(holder, issue);
@@ -192,6 +209,7 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		TextView locationText;
 		TextView typeText;
 		ImageView thumbnail;
+		Issue issue;
 		boolean loading = false;
 	}
 	
