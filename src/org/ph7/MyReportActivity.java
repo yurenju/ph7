@@ -85,7 +85,6 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 			holder.locationText.setWidth(textWidth);
 			holder.typeText.setWidth(textWidth);
 			holder.thumbnail.setImageBitmap(thumbnails[index]);
-			Log.i("ph7", "index: " + index);
 		}
 	};
 	
@@ -123,7 +122,6 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		holder.locationText.setText(issue.location);
 		holder.typeText.setText(issue.type);
 		holder.loading = false;	
-		Log.i("ph7", "settingHolder index: " + index);
 		executor.execute(new LoadBitmapTask(index, issue.imagePath));
 	}
 	
