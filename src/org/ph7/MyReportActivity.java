@@ -40,13 +40,20 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		displayWidth = d.getWidth();
 		issueAdapter = new IssueAdapter(this);
 		thumbnails = new Bitmap[issueAdapter.getCount()];
-		for (Bitmap t : thumbnails) {
-			t = null;
-		}
 		
         setContentView(R.layout.listissues);
         setListAdapter(issueAdapter);
         getListView().setOnScrollListener(this);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (!issueAdapter.isDataSynced()) {
+			issueAdapter.initialIssueList();
+			thumbnails = new Bitmap[issueAdapter.getCount()];
+			issueAdapter.notifyDataSetChanged();
+		}
 	}
 	
 	protected void onListItemClick (ListView listview, View view, int position, long id) {
@@ -125,26 +132,32 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		private SQLiteDatabase db;
 		private ArrayList<Issue> issueList = new ArrayList<Issue>();
 		
+		public boolean isDataSynced () {
+			Cursor c = db.rawQuery("SELECT location, issue_type, image_filename, local_id FROM " + 
+					DbOpenHelper.REPORTS_TABLE_NAME, null);
+			int count = c.getCount();
+			c.close();
+			return (count == issueList.size());
+		}
 		
 		public int getIssueId (int position) {
 			return issueList.get(position).id;
 		}
 		
-		public IssueAdapter (Context context) {
-			DbOpenHelper helper = new DbOpenHelper(getApplicationContext());
-			db = helper.getReadableDatabase();
-			inflater = LayoutInflater.from(context);
-			
-			Cursor c = db.rawQuery("SELECT location, issue_type, image_filename, local_id FROM " + 
-									DbOpenHelper.REPORTS_TABLE_NAME, null);
+		public void initialIssueList() {
+			issueList.clear();
+			Cursor c = db.rawQuery(
+					"SELECT location, issue_type, image_filename, local_id FROM "
+							+ DbOpenHelper.REPORTS_TABLE_NAME, null);
 			if (c == null)
 				return;
-			
+
 			try {
 				while (c.moveToNext()) {
-					
-					String[] items = getResources().getStringArray(R.array.issue_items);
-					
+
+					String[] items = getResources().getStringArray(
+							R.array.issue_items);
+
 					Issue issue = new Issue();
 					int index = c.getInt(1);
 					issue.location = c.getString(0);
@@ -156,7 +169,14 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 			} finally {
 				c.close();
 			}
+		}
+		
+		public IssueAdapter (Context context) {
+			DbOpenHelper helper = new DbOpenHelper(context);
+			db = helper.getReadableDatabase();
+			inflater = LayoutInflater.from(context);
 			
+			initialIssueList();			
 		}
 		
 		public int getCount() {
