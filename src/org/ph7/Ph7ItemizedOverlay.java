@@ -77,7 +77,7 @@ public class Ph7ItemizedOverlay extends ItemizedOverlay<OverlayItem> {
 		drawCircle(canvas, circlePaint, point, accuracypx);
 		drawCircle(canvas, linePaint, point, accuracypx);
 
-		super.draw(canvas, mapView, shadow);
+		super.draw(canvas, mapView, false);
 	}
 
 	private Point getPoint(MapView mapView) {
