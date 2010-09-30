@@ -64,6 +64,13 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		startActivity(intent);
 	}
 	
+	private void setImage (ViewHolder holder, Bitmap bitmap) {
+		int textWidth = displayWidth - bitmap.getWidth() - 20; // 20 is margin
+		holder.locationText.setWidth(textWidth);
+		holder.typeText.setWidth(textWidth);
+		holder.thumbnail.setImageBitmap(bitmap);
+	}
+	
 	Handler handler = new Handler() {
 		public void handleMessage (Message msg) {
 			int index = msg.getData().getInt("index");
@@ -81,10 +88,7 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 			if (view == null) return;
 
 			ViewHolder holder = (ViewHolder)view.getTag();
-			int textWidth = displayWidth - thumbnails[index].getWidth() - 20; // 20 is margin
-			holder.locationText.setWidth(textWidth);
-			holder.typeText.setWidth(textWidth);
-			holder.thumbnail.setImageBitmap(thumbnails[index]);
+			setImage(holder, thumbnails[index]);
 		}
 	};
 	
@@ -98,23 +102,24 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		}
 		
 		public void run() {
-			Message msg = Message.obtain();
-			if (thumbnails[index] == null) {
-				Bitmap bm = null;
-				try {
-					bm = Util.getBitmap(imagePath, THUMBNAIL_HEIGHT);
-				}
-				catch (Exception e) {
-					Log.e ("ph7", e.getMessage());
-				}
-				thumbnails[index] = bm;
+			Bitmap bm = null;
+			try {
+				bm = Util.getBitmap(imagePath, THUMBNAIL_HEIGHT);
+			} catch (Exception e) {
+				Log.e("ph7", e.getMessage());
 			}
-			Bundle data = new Bundle();
-			data.putInt("index", index);
-			data.putString("image-path", imagePath);
-			msg.setData(data);
-			handler.sendMessage(msg);
+			thumbnails[index] = bm;
+			sendMessage(index, imagePath);
 		}
+	}
+	
+	private void sendMessage (int index, String imagePath) {
+		Message msg = Message.obtain();
+		Bundle data = new Bundle();
+		data.putInt("index", index);
+		data.putString("image-path", imagePath);
+		msg.setData(data);
+		handler.sendMessage(msg);
 	}
 	
 	private void settingHolder (ViewHolder holder, Issue issue) {
@@ -122,7 +127,12 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		holder.locationText.setText(issue.location);
 		holder.typeText.setText(issue.type);
 		holder.loading = false;	
-		executor.execute(new LoadBitmapTask(index, issue.imagePath));
+		if (thumbnails[index] == null) 
+			executor.execute(new LoadBitmapTask(index, issue.imagePath));
+		else {
+			setImage(holder, thumbnails[index]);
+		}
+		
 	}
 	
 	public class IssueAdapter extends BaseAdapter {
@@ -152,7 +162,6 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 
 			try {
 				while (c.moveToNext()) {
-
 					String[] items = getResources().getStringArray(
 							R.array.issue_items);
 
