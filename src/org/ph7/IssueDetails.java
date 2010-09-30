@@ -85,6 +85,7 @@ public class IssueDetails extends Activity {
 			public void onClick(View arg0) {
 				Intent intent = new Intent();
 				intent.setClass(IssueDetails.this, Map.class);
+				intent.putExtra("single", true);
 				intent.putExtra("latitude", latitude);
 				intent.putExtra("longitude", longitude);
 				intent.putExtra("accuracy", accuracy);

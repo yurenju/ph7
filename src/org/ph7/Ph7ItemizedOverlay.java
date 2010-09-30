@@ -19,7 +19,7 @@ import com.google.android.maps.Projection;
 public class Ph7ItemizedOverlay extends ItemizedOverlay<OverlayItem> {
 	private ArrayList<OverlayItem> overlays = new ArrayList<OverlayItem>();
 	private Context context;
-	private float accuracy;
+	private float accuracy = 0;
 
 	public float getAccuracy() {
 		return accuracy;
@@ -66,16 +66,18 @@ public class Ph7ItemizedOverlay extends ItemizedOverlay<OverlayItem> {
 		if (point == null)
 			return;
 
-		Projection projection = mapView.getProjection();
-		float accuracypx = projection.metersToEquatorPixels(accuracy);
-		Paint circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		circlePaint.setARGB(60, 114, 159, 207);
-		Paint linePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		linePaint.setARGB(100, 52, 101, 164);
-		linePaint.setStyle(Style.STROKE);
-		linePaint.setStrokeWidth(2);
-		drawCircle(canvas, circlePaint, point, accuracypx);
-		drawCircle(canvas, linePaint, point, accuracypx);
+		if (accuracy >= 0) {
+			Projection projection = mapView.getProjection();
+			float accuracypx = projection.metersToEquatorPixels(accuracy);
+			Paint circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+			circlePaint.setARGB(60, 114, 159, 207);
+			Paint linePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+			linePaint.setARGB(100, 52, 101, 164);
+			linePaint.setStyle(Style.STROKE);
+			linePaint.setStrokeWidth(2);
+			drawCircle(canvas, circlePaint, point, accuracypx);
+			drawCircle(canvas, linePaint, point, accuracypx);	
+		}		
 
 		super.draw(canvas, mapView, false);
 	}

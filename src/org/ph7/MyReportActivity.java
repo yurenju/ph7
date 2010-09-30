@@ -17,10 +17,12 @@ import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -44,6 +46,16 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
         setContentView(R.layout.listissues);
         setListAdapter(issueAdapter);
         getListView().setOnScrollListener(this);
+        
+        Button btnMap = (Button)findViewById(R.id.ButtonOpenMap);
+        btnMap.setOnClickListener(new OnClickListener() {			
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(MyReportActivity.this, Map.class);
+				intent.putExtra("single", false);
+				startActivity(intent);
+			}
+		});
 	}
 	
 	@Override
@@ -153,29 +165,7 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		}
 		
 		public void initialIssueList() {
-			issueList.clear();
-			Cursor c = db.rawQuery(
-					"SELECT location, issue_type, image_filename, local_id FROM "
-							+ DbOpenHelper.REPORTS_TABLE_NAME, null);
-			if (c == null)
-				return;
-
-			try {
-				while (c.moveToNext()) {
-					String[] items = getResources().getStringArray(
-							R.array.issue_items);
-
-					Issue issue = new Issue();
-					int index = c.getInt(1);
-					issue.location = c.getString(0);
-					issue.type = items[index];
-					issue.imagePath = c.getString(2);
-					issue.id = c.getInt(3);
-					issueList.add(issue);
-				}
-			} finally {
-				c.close();
-			}
+			issueList = Util.getIssueList(MyReportActivity.this);
 		}
 		
 		public IssueAdapter (Context context) {
@@ -240,12 +230,6 @@ public class MyReportActivity extends ListActivity implements OnScrollListener {
 		boolean loading = false;
 	}
 	
-	class Issue {
-		String location;
-		String type;
-		String imagePath;
-		int id;
-	}
 
 
 	public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {

@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="wrap_content" android:layout_height="wrap_content">
 	<com.google.android.maps.MapView
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
 		android:apiKey="0MpUKRzlU8m29_8w5wjoKdnI3AOOu45N0OdJ8eg"
-		android:clickable="true" android:id="@+id/mapview" />
-</LinearLayout>
+		android:clickable="true" android:id="@+id/mapview"
+		android:layout_alignParentTop="true" />
+
+	<Button android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:id="@+id/ButtonPrevious"
+		android:text="Previous" android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true"></Button>
+	<Button android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:id="@+id/ButtonNext"
+		android:text="Next" android:layout_toRightOf="@+id/ButtonPrevious"
+		android:layout_alignBottom="@+id/ButtonPrevious"></Button>
+</RelativeLayout>
