@@ -1,11 +1,8 @@
 package org.ph7;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import com.google.android.maps.GeoPoint;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,9 +10,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.util.Log;
-import android.view.Display;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class Util {
 	public static Bitmap getBitmap (String path, int height) {
@@ -59,6 +53,7 @@ public class Util {
 			issue.latitude = cursor.getFloat(5);
 			issue.longitude = cursor.getFloat(6);
 			issue.accuracy = cursor.getFloat(7);
+			issue.type = items[index];
 			
 		} catch (Exception e) {
 			Log.d("TEST", e.getMessage());
