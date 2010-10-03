@@ -22,6 +22,7 @@ public class IssueDetails extends Activity {
 	private float longitude;
 	private float accuracy;
 	private String comment;
+	private int issueId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +30,11 @@ public class IssueDetails extends Activity {
 		setContentView(R.layout.issue_details);
 		DbOpenHelper dbHelper = new DbOpenHelper(this.getApplicationContext());
 		db = dbHelper.getReadableDatabase();
-		int id = getIntent().getExtras().getInt("id");
+		issueId = getIntent().getExtras().getInt("id");
 
 		String[] columns = { "location", "issue_type", "image_filename",
 				"local_id", "created_time", "latitude", "longitude", "accuracy", "comment"};
-		String[] args = { String.valueOf(id) };
+		String[] args = { String.valueOf(issueId) };
 		Cursor c = null;
 		try {
 			c = db.query(DbOpenHelper.REPORTS_TABLE_NAME, columns,
@@ -86,9 +87,7 @@ public class IssueDetails extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(IssueDetails.this, Map.class);
 				intent.putExtra("single", true);
-				intent.putExtra("latitude", latitude);
-				intent.putExtra("longitude", longitude);
-				intent.putExtra("accuracy", accuracy);
+				intent.putExtra("issue-id", issueId);
 				startActivity(intent);
 			}
 		});
