@@ -54,6 +54,7 @@ public class Util {
 			issue.longitude = cursor.getFloat(6);
 			issue.accuracy = cursor.getFloat(7);
 			issue.type = items[index];
+			issue.id = cursor.getInt(3);
 			
 		} catch (Exception e) {
 			Log.d("TEST", e.getMessage());
